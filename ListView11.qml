@@ -100,39 +100,79 @@ import QtQuick 2.5
 //import "../common"
 
 Background11 {
-    width: 720
-    height: 80
+    width: 360
+    height: 640
 
     ListView {
         id: view
         anchors.fill: parent
         anchors.margins: 20
-        currentIndex: 0
+//        currentIndex: 0
 
         clip: true
 
         model: 100
 
-        delegate: numberDelegate
+        delegate: listcomponent
         spacing: 4
 
-        highlight: highlightComponent
-        highlightFollowsCurrentItem: false
+//        highlight: highlightComponent
+//        highlightFollowsCurrentItem: false
         focus: true
-        orientation: ListView.Horizontal
+        //orientation: ListView.Horizontal
+//        header:headercom
+//        footer:footercom
+    }
+
+    Component{
+        id:listcomponent
+        Rectangle{
+            id:listnei
+            width: ListView.view.width
+            height: 40
+            color: ListView.isCurrentItem?"gray":"lightGray"
+
+            MouseArea{
+                anchors.fill: parent
+                onClicked: listnei.ListView.view.currentIndex=index
+            }
+            Text {
+
+                text: index
+                anchors.fill: parent
+                font.pixelSize: 10
+            }
+        }
+    }
+    Component{
+        id:headercom
+        Rectangle{
+            width: 360
+            height: 20
+            color: "yellow"
+        }
+    }
+
+    Component{
+        id:footercom
+        Rectangle{
+            width: 360
+            height: 20
+            color: "red"
+        }
     }
 // M1>>
     Component {
         id: highlightComponent
 
         Item {
-//            width: ListView.view.width
-//            height: ListView.view.currentItem.height
-            width: 40
-            height: 40
-            x: ListView.view.currentItem.x
+            width: ListView.view.width
+            height: ListView.view.currentItem.height
+//            width: 40
+//            height: 40
+            y: ListView.view.currentItem.y
 
-            Behavior on x {
+            Behavior on y {
                 SequentialAnimation {
                     PropertyAnimation { target: highlightRectangle; property: "opacity"; to: 0; duration: 200 }
                     NumberAnimation { duration: 1 }
@@ -165,6 +205,8 @@ Background11 {
 
         Item {
             id:ccccc
+//            width: ListView.view.width
+//            height: ListView.view.currentItem.height
             width: 40
             height: 40
 

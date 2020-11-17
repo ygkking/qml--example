@@ -9,10 +9,19 @@ Window {
     id:root
     property variant easings:["Linear","InQuad","OutQuad","InOutQuad","InCubic","InSine","InCirc","InElastic","InBack","InBounce"]
 
-    ListView11{
+    ExpandingList{
         x:0
         y:0
     }
+
+//    GradviewCom{
+//        x:0
+//        y:0
+//    }
+//    ListView11{
+//        x:0
+//        y:0
+//    }
 //    Repeater11{
 //        x:0
 //        y:0
